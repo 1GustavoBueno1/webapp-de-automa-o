@@ -1,5 +1,8 @@
 import {DB} from "../config/database";
 
+
+const camposPermitidos = ["nome", "cnpj", "responsavel", "email"];
+
 export async function criarCliente(
     nome: string,
     cnpj: string,
@@ -23,6 +26,20 @@ export async function buscarResposavel(responsavel: string) {
         SELECT * FROM clientes WHERE responsavel = $1
         `,
         [responsavel]
-    )
+    );
     return resultado.rows
-}
+};
+
+export async function atualizarCliente(id: number, campo: string, valor: string) {
+    const resultado = await DB.query(
+        `
+        UPDATE clientes
+        SET ${campo} = $1
+        WHERE id = $2
+        RETURNING *
+        `, [valor, id]
+    );
+
+    return resultado.rows[0]
+
+};

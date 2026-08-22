@@ -5,7 +5,7 @@ const router = Router();
 router.get("/", listarClientes);
 router.post("/", CadastrarCliente);
 router.get("/buscar", BuscarResposavel);
-router.post("/", EditarClientes)
+router.post("/:id", EditarClientes)
 
 
 export default router;
