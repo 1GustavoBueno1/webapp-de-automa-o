@@ -1,12 +1,21 @@
 import { Request, Response } from "express";
-import { criarCliente, buscarResposavel, atualizarCliente } from "../repositories/clientes_repository";
+import { criarCliente, buscarResposavel, atualizarCliente, deletarClientes} from "../repositories/clientes_repository";
 
 
 const camposPermitidos = ["nome", "cnpj", "responsavel", "email"];
 
-export function listarClientes(req: Request, res: Response) {
-    res.json({
-        message: "lista de clientes",
+export async function DeletarCliente(req: Request, res: Response) {
+    const id = Number(req.params.id);
+    if (!id) {
+        return res.status(400).json({
+            message: "Informe quem voce quer deletar"
+        });
+    };
+
+    const cliente = await deletarClientes(id)
+    return res.status(200).json({
+        message: "Cliente deletado com sucesso",
+        cliente
     });
 };
 
@@ -66,7 +75,7 @@ export async function EditarClientes(req: Request, res: Response) {
 
     const cliente = await atualizarCliente(id, campo, valor)
 
-    return res.json({
+    return res.status(201).json({
         message: "Dados atualizados",
         cliente
     })

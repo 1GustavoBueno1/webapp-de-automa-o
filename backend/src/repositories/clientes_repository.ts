@@ -43,3 +43,16 @@ export async function atualizarCliente(id: number, campo: string, valor: string)
     return resultado.rows[0]
 
 };
+
+export async function deletarClientes(id: number) {
+    const resultado = await DB.query(
+
+        `
+        DELETE FROM clientes
+        WHERE id = $1
+        RETURNING *
+        `, [id]
+    );
+
+    return resultado.rows[0]
+}
