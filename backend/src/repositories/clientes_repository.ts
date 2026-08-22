@@ -17,12 +17,12 @@ export async function criarCliente(
     return resultado.rows[0]
 }
 
-export async function buscarClientes(nome: string) {
+export async function buscarResposavel(responsavel: string) {
     const resultado = await  DB.query(
         `
-        SELECT * FROM clientes WHERE nomee = $1
+        SELECT * FROM clientes WHERE responsavel ILIKE $1
         `,
-        [nome]
+        [responsavel]
     )
-    return resultado.rows[0]
+    return resultado.rows
 }

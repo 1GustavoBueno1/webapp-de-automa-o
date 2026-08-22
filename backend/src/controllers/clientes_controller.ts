@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { criarCliente, buscarClientes } from "../repositories/clientes_repository";
+import { criarCliente, buscarResposavel } from "../repositories/clientes_repository";
 
 export function listarClientes(req: Request, res: Response) {
     res.json({
@@ -9,14 +9,16 @@ export function listarClientes(req: Request, res: Response) {
 
 
 
-export async function BuscarClientes(req: Request, res: Response) {
-    const {nome} = req.body;
-    const cliente = await buscarClientes (nome)
-    res.status(201).json({
-        message: `Cliente encontrato`,
-        cliente
-    })
+export async function BuscarResposavel(req: Request, res: Response) {
+    const responsavel = String(req.query.responsavel ?? "");
+    if (!responsavel) {
+        return res.status(400).json({
+            message: "Informe o responsavel"
+        });
+    };
+    const empresas = await buscarResposavel(responsavel);
 
+    return res.json(empresas);
 };
 
 export function EditarClientes(req: Request, res: Response) {
