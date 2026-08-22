@@ -20,7 +20,7 @@ export async function criarCliente(
 export async function buscarResposavel(responsavel: string) {
     const resultado = await  DB.query(
         `
-        SELECT * FROM clientes WHERE responsavel ILIKE $1
+        SELECT * FROM clientes WHERE responsavel = $1
         `,
         [responsavel]
     )

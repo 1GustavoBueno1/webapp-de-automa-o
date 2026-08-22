@@ -33,6 +33,11 @@ export function EditarClientes(req: Request, res: Response) {
 export async function CadastrarCliente(req: Request, res: Response) {
     const { nome, cnpj, responsavel, email} = req.body;
 
+    if (!nome || !cnpj) {
+        return res.status(400).json({
+            message: "Esta faltando dados"
+        })
+    }
     const cliente = await criarCliente (
         nome, cnpj, responsavel, email
     )
