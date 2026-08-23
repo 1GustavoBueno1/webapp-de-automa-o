@@ -5,4 +5,4 @@ CREATE TABLE usuarios (
     senha VARCHAR(150) NOT NULL,
     role VARCHAR(20) NOT NULL,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+)

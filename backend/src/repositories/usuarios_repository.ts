@@ -14,3 +14,18 @@ export async function criarUsuairo(
     );
     return resultado.rows[0]
 };
+
+
+export async function buscarUsuarioPorEmail(email: string) {
+    const resultado = await DB.query(
+
+        `
+        SELECT *
+        FROM usuarios
+        WHERE email = $1
+        `,
+        [email]
+    ) ;
+
+    return resultado.rows[0]
+}
