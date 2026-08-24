@@ -1,11 +1,11 @@
 import app from "./app";
-import { DB } from "./config/database";
+import { verificarConexao } from "./repositories/database_repository";
 
 console.log(process.env.POSTGRES_USER);
 console.log(process.env.POSTGRES_DB);
-DB.query("SELECT NOW()")
+verificarConexao()
   .then((resultado) => {
-    console.log("Banco conectado:", resultado.rows[0]);
+    console.log("Banco conectado:", resultado);
   })
   .catch((erro) => {
     console.error("Erro ao conectar no banco:", erro);

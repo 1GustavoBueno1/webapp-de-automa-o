@@ -1,8 +1,5 @@
 import {DB} from "../config/database";
 
-
-const camposPermitidos = ["nome", "cnpj", "responsavel", "email"];
-
 export async function criarCliente(
     nome: string,
     cnpj: string,
