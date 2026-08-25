@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import "dotenv/config"
+import type { TokenPayLoad } from "../types/auth";
 
 
 
@@ -24,7 +25,11 @@ export function autenticar(req: Request, res: Response, next: NextFunction) {
         const payload = jwt.verify(
             token,
             process.env.JWT_SECRET as string
-        );
+        ) as TokenPayLoad;
+    req.usuario = {
+        id: payload.id,
+        role: payload.role
+    }
     console.log(payload);
     next();
     } catch{
