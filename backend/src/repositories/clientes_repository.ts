@@ -53,3 +53,12 @@ export async function deletarClientes(id: number) {
 
     return resultado.rows[0]
 }
+export async function listarClientes() {
+    const resultado = await DB.query (
+
+        `
+        SELECT * FROM clientes
+        `
+    )
+    return resultado.rows
+}

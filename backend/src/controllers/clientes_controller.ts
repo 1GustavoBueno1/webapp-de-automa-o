@@ -3,8 +3,10 @@ import {
     buscarClientesPorResponsavel,
     cadastrarCliente,
     deletarCliente,
-    editarCliente
+    editarCliente,
 } from "../services/clientes_service";
+
+import { listarClientes } from "../repositories/clientes_repository";
 
 export async function DeletarCliente(req: Request, res: Response) {
     const id = Number(req.params.id);
@@ -57,4 +59,8 @@ export async function EditarClientes(req: Request, res: Response) {
         message: "Dados atualizados",
         cliente: resultado.cliente
     });
+}
+export async function ListarCLientes(req: Request, res:Response) {
+    const resultado = await listarClientes()
+    return res.status(200).json(resultado)
 }
