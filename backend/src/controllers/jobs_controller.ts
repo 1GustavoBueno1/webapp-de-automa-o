@@ -4,7 +4,7 @@ import { cadastroJOB } from "../services/jobs_service";
 
 
 import { Response, Request } from "express";
-export async function cadastrarJOBs(res: Response, req: Request) {
+export async function iniciarJOBs(res: Response, req: Request) {
     const automacaoID = Number(req.params.id);
     const resultado = await cadastroJOB(automacaoID)
 
