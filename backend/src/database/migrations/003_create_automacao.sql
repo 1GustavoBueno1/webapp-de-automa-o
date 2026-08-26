@@ -7,5 +7,4 @@ CREATE TABLE automacao (
     CONSTRAINT fk_automacao_cliente
         FOREIGN KEY(cliente_id)
         REFERENCES clientes(id)
-
 )
