@@ -1,14 +1,14 @@
 import bcrypt from "bcrypt";
-import jwt, { TokenExpiredError } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { buscarUsuarioPorEmail, criarUsuairo } from "../repositories/usuarios_repository";
-import type { Role } from "../types/usuario";
+import type { role } from "../types/usuario";
 import "dotenv/config"
 
 export async function cadastrarUsuario(
     nome: string,
     email: string,
     senha: string,
-    role: Role
+    role: role
 ) {
     if (!nome || !email || !senha || !role) {
         return { erro: "Dados estão faltando" };
@@ -42,7 +42,7 @@ export async function autenticarUsuario(email: string, senha: string) {
     }
     const token = jwt.sign({
         id: usuario.id,
-        role: usuario.Role
+        role: usuario.role
     }, 
     process.env.JWT_SECRET as string, {
 

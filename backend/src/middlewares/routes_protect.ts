@@ -32,7 +32,8 @@ export function autenticar(req: Request, res: Response, next: NextFunction) {
     }
     console.log(payload);
     next();
-    } catch{
+    } catch(erro){
+        console.log(erro)
         return res.status(401).json({
             message: "token invalido"
         });

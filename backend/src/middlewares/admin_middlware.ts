@@ -10,8 +10,10 @@ export function exigirADM(
             message: "Usuario não autenticado"
         })
     }
-    if (req.usuario?.role !== "ADMIN") {
-        return res.status(401).json({
+    console.log("ROLE RECEBIDA:", req.usuario.role);
+    if (req.usuario.role !== "ADMIN") {
+        return res.status(403).json({
+            
             message: "Acesso negado"
         })
     }

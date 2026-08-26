@@ -1,11 +1,11 @@
 import { DB } from "../config/database";
-import type { Role } from "../types/usuario";
+import type { role } from "../types/usuario";
 
 export async function criarUsuairo(
     nome: string,
     email: string,
     senha: string,
-    role: Role
+    role: role
 ) { 
     const resultado = await DB.query(
 

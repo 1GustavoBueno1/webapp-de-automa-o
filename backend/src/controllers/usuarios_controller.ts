@@ -3,7 +3,7 @@ import {
     autenticarUsuario,
     cadastrarUsuario as cadastrarUsuarioService
 } from "../services/usuarios_service";
-import type { Role } from "../types/usuario";
+import type { role } from "../types/usuario";
 
 export async function cadastrarUsuario(req: Request, res: Response) {
     const { nome, email, senha, role } = req.body;
@@ -11,7 +11,7 @@ export async function cadastrarUsuario(req: Request, res: Response) {
         nome,
         email,
         senha,
-        role as Role
+        role as role
     );
 
     if ("erro" in resultado) {
