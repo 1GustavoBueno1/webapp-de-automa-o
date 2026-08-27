@@ -27,3 +27,21 @@ export async function IdExistenteAutomacao(id: number) {
     )
     return resultado.rows[0]
 }
+
+export async function listarAutomacoes() {
+    const resultado = await DB.query(
+        `
+        SELECT * FROM automacao
+        `
+    )
+    return resultado.rows
+}
+
+export async function buscarAutomacaoPorId(id: number) {
+    const resultado = await DB.query(
+        `
+        SELECT * FROM automacao WHERE id = $1
+        `, [id]
+    )
+    return resultado.rows[0]
+}

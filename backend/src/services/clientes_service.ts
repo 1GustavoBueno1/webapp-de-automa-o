@@ -46,14 +46,14 @@ export async function editarCliente(
     }
 
     if (!camposPermitidos.includes(campo)) {
-        throw new Error("Campo invalido!");
+        return { erro: "Campo invalido!" };
     }
 
     if (campos.length !== 1) {
         return { erro: "Envie apenas um campo para atualizar" };
     }
-    if (dados[campo] === "cnpj") {
-        if (await CnpjExistente(dados[campo])) {
+    if (campo === "cnpj") {
+        if (await CnpjExistente(dados[campo]!)) {
             return { erro: "CNPJ já cadastrado" };
     }
     }
