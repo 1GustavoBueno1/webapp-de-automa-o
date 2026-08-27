@@ -2,7 +2,8 @@ import {
     atualizarCliente,
     buscarResposavel,
     criarCliente,
-    deletarClientes
+    deletarClientes,
+    CnpjExistente
 } from "../repositories/clientes_repository";
 
 const camposPermitidos = ["nome", "cnpj", "responsavel", "email"];
@@ -15,6 +16,9 @@ export async function cadastrarCliente(
 ) {
     if (!nome || !cnpj) {
         return { erro: "Esta faltando dados" };
+    }
+    if (await CnpjExistente(cnpj)) {
+        return { erro: "CNPJ já cadastrado" };
     }
 
     const cliente = await criarCliente(nome, cnpj, responsavel, email);
@@ -47,6 +51,11 @@ export async function editarCliente(
 
     if (campos.length !== 1) {
         return { erro: "Envie apenas um campo para atualizar" };
+    }
+    if (dados[campo] === "cnpj") {
+        if (await CnpjExistente(dados[campo])) {
+            return { erro: "CNPJ já cadastrado" };
+    }
     }
 
     const cliente = await atualizarCliente(id, campo, dados[campo]!);

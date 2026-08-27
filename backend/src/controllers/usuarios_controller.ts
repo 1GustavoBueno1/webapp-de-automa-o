@@ -19,8 +19,7 @@ export async function cadastrarUsuario(req: Request, res: Response) {
     }
 
     return res.status(201).json({
-        message: "Usuario cadastrado",
-        usuario: resultado.usuario
+        message: "Usuario cadastrado"
     });
 }
 

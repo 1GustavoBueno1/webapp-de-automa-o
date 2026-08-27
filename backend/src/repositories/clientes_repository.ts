@@ -62,3 +62,24 @@ export async function listarClientes() {
     )
     return resultado.rows
 }
+
+export async function CnpjExistente(cnpj: string) {
+    const resultado = await DB.query (
+        `
+        SELECT id, nome, cnpj
+        FROM clientes
+        WHERE cnpj = $1
+        `, [cnpj]
+    )
+    return resultado.rows[0]
+}
+export async function IdExistente(id: string) {
+    const resultado = await DB.query (
+        `
+        SELECT id, nome, cnpj
+        FROM clientes
+        WHERE id = $1
+        `, [id]
+    )
+    return resultado.rows[0]
+}

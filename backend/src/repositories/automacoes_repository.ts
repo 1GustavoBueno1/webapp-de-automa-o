@@ -16,3 +16,14 @@ export async function criarAutomacao(
     return resultado.rows[0]
     
 }
+
+export async function IdExistenteAutomacao(id: number) {
+    const resultado = await DB.query (
+        `
+        SELECT (id, nome, tipo, cliente_id)
+        FROM automacao
+        WHERE id = $1
+        `, [id]
+    )
+    return resultado.rows[0]
+}

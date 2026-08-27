@@ -1,5 +1,5 @@
 import { criarAutomacao } from "../repositories/automacoes_repository";
-
+import { IdExistente } from "../repositories/clientes_repository";
 
 
 export async function CadastrarCliente(
@@ -10,6 +10,10 @@ export async function CadastrarCliente(
     if (!nome || !tipo || !cliente_id) {
         return {erro: "Dados estão faltando"}
     }
+    if (await !IdExistente(cliente_id)) {
+
+    }
+    
     const automacao = await criarAutomacao(
         nome,
         tipo,
@@ -17,3 +21,4 @@ export async function CadastrarCliente(
     )
     return automacao
 }
+
