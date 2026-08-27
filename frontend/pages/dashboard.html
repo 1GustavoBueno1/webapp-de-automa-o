@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — Sistema de Automação</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="sidebar-brand">Sistema<span>Automação</span></div>
+            <nav id="sidebar-nav" class="sidebar-nav"></nav>
+        </aside>
+
+        <div class="app-main">
+            <header class="topbar">
+                <h1 id="page-title">Dashboard</h1>
+                <div class="topbar-user">
+                    <span id="current-role" class="role-tag"></span>
+                    <button id="logout-btn" class="btn btn-ghost" type="button">Sair</button>
+                </div>
+            </header>
+
+            <main class="content">
+                <section class="dashboard-grid">
+                    <a class="dash-card" href="clientes.html">
+                        <h2>Clientes</h2>
+                        <p>Cadastre, edite e pesquise os clientes do sistema.</p>
+                    </a>
+                    <a class="dash-card" href="automacoes.html">
+                        <h2>Automações</h2>
+                        <p>Configure automações vinculadas a clientes e execute processos.</p>
+                    </a>
+                    <a class="dash-card" href="jobs.html">
+                        <h2>Jobs</h2>
+                        <p>Acompanhe o status das execuções das automações.</p>
+                    </a>
+                    <a class="dash-card" id="dash-usuarios-card" href="usuarios.html" hidden>
+                        <h2>Usuários</h2>
+                        <p>Cadastre novos usuários e defina o perfil de acesso.</p>
+                    </a>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script type="module" src="../js/dashboard.js"></script>
+</body>
+</html>

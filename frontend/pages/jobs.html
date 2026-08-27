@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs — Sistema de Automação</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="sidebar-brand">Sistema<span>Automação</span></div>
+            <nav id="sidebar-nav" class="sidebar-nav"></nav>
+        </aside>
+
+        <div class="app-main">
+            <header class="topbar">
+                <h1 id="page-title">Jobs</h1>
+                <div class="topbar-user">
+                    <span id="current-role" class="role-tag"></span>
+                    <button id="logout-btn" class="btn btn-ghost" type="button">Sair</button>
+                </div>
+            </header>
+
+            <main class="content">
+                <div id="jobs-alert" class="alert" hidden></div>
+
+                <section class="toolbar">
+                    <span></span>
+                    <button type="button" id="refresh-jobs-btn" class="btn btn-secondary">Atualizar</button>
+                </section>
+
+                <section class="panel">
+                    <div style="overflow-x:auto">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Automação</th>
+                                    <th>Cliente</th>
+                                    <th>Criado em</th>
+                                    <th>Início</th>
+                                    <th>Fim</th>
+                                    <th>Resultado</th>
+                                    <th>Erro</th>
+                                </tr>
+                            </thead>
+                            <tbody id="jobs-tbody">
+                                <tr><td colspan="8" class="empty-state">Carregando...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script type="module" src="../js/jobs.js"></script>
+</body>
+</html>

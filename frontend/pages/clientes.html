@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes — Sistema de Automação</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="sidebar-brand">Sistema<span>Automação</span></div>
+            <nav id="sidebar-nav" class="sidebar-nav"></nav>
+        </aside>
+
+        <div class="app-main">
+            <header class="topbar">
+                <h1 id="page-title">Clientes</h1>
+                <div class="topbar-user">
+                    <span id="current-role" class="role-tag"></span>
+                    <button id="logout-btn" class="btn btn-ghost" type="button">Sair</button>
+                </div>
+            </header>
+
+            <main class="content">
+                <div id="clientes-alert" class="alert" hidden></div>
+
+                <section class="toolbar">
+                    <form id="search-form" class="search-form">
+                        <input type="text" id="search-responsavel" placeholder="Buscar por responsável...">
+                        <button type="submit" class="btn btn-secondary">Buscar</button>
+                        <button type="button" id="clear-search-btn" class="btn btn-ghost">Limpar</button>
+                    </form>
+                    <button type="button" id="new-cliente-btn" class="btn btn-primary" hidden>Novo Cliente</button>
+                </section>
+
+                <section id="cliente-form-section" class="panel" hidden>
+                    <h2 id="cliente-form-title">Novo Cliente</h2>
+                    <form id="cliente-form">
+                        <input type="hidden" id="cliente-id">
+
+                        <label for="cliente-nome">Nome</label>
+                        <input type="text" id="cliente-nome" required>
+
+                        <label for="cliente-cnpj">CNPJ</label>
+                        <input type="text" id="cliente-cnpj" required>
+
+                        <label for="cliente-responsavel">Responsável</label>
+                        <input type="text" id="cliente-responsavel">
+
+                        <label for="cliente-email">Email</label>
+                        <input type="email" id="cliente-email">
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <button type="button" id="cancel-cliente-btn" class="btn btn-ghost">Cancelar</button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="panel">
+                    <div style="overflow-x:auto">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>CNPJ</th>
+                                    <th>Responsável</th>
+                                    <th>Email</th>
+                                    <th>Criado em</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="clientes-tbody">
+                                <tr><td colspan="6" class="empty-state">Carregando...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script type="module" src="../js/clientes.js"></script>
+</body>
+</html>

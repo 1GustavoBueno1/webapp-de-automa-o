@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — Sistema de Automação</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+    <main class="auth-card">
+        <h1 class="auth-title">Sistema de Automação</h1>
+        <p class="auth-subtitle">Entre com sua conta para continuar</p>
+
+        <form id="login-form" novalidate>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="username">
+
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" required autocomplete="current-password">
+
+            <div id="login-alert" class="alert" hidden></div>
+
+            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+        </form>
+    </main>
+
+    <script type="module" src="js/login.js"></script>
+</body>
+</html>

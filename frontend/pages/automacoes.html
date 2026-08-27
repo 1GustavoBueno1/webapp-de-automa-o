@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automações — Sistema de Automação</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="sidebar-brand">Sistema<span>Automação</span></div>
+            <nav id="sidebar-nav" class="sidebar-nav"></nav>
+        </aside>
+
+        <div class="app-main">
+            <header class="topbar">
+                <h1 id="page-title">Automações</h1>
+                <div class="topbar-user">
+                    <span id="current-role" class="role-tag"></span>
+                    <button id="logout-btn" class="btn btn-ghost" type="button">Sair</button>
+                </div>
+            </header>
+
+            <main class="content">
+                <div id="automacoes-alert" class="alert" hidden></div>
+
+                <section class="toolbar">
+                    <span></span>
+                    <button type="button" id="new-automacao-btn" class="btn btn-primary" hidden>Nova Automação</button>
+                </section>
+
+                <section id="automacao-form-section" class="panel" hidden>
+                    <h2>Nova Automação</h2>
+                    <form id="automacao-form">
+                        <label for="automacao-nome">Nome</label>
+                        <input type="text" id="automacao-nome" required>
+
+                        <label for="automacao-tipo">Tipo</label>
+                        <input type="text" id="automacao-tipo" required>
+
+                        <label for="automacao-cliente">Cliente</label>
+                        <select id="automacao-cliente" required>
+                            <option value="">Selecione um cliente</option>
+                        </select>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <button type="button" id="cancel-automacao-btn" class="btn btn-ghost">Cancelar</button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="panel">
+                    <div style="overflow-x:auto">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Tipo</th>
+                                    <th>Cliente</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="automacoes-tbody">
+                                <tr><td colspan="4" class="empty-state">Carregando...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script type="module" src="../js/automacoes.js"></script>
+</body>
+</html>

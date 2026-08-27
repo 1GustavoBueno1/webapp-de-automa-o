@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários — Sistema de Automação</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="sidebar-brand">Sistema<span>Automação</span></div>
+            <nav id="sidebar-nav" class="sidebar-nav"></nav>
+        </aside>
+
+        <div class="app-main">
+            <header class="topbar">
+                <h1 id="page-title">Usuários</h1>
+                <div class="topbar-user">
+                    <span id="current-role" class="role-tag"></span>
+                    <button id="logout-btn" class="btn btn-ghost" type="button">Sair</button>
+                </div>
+            </header>
+
+            <main class="content">
+                <div id="usuarios-alert" class="alert" hidden></div>
+
+                <section class="panel">
+                    <h2>Novo Usuário</h2>
+                    <p class="text-muted">
+                        A listagem de usuários não está disponível: o backend ainda não expõe um endpoint de leitura
+                        (<code>GET /usuarios</code>). Esta tela permite apenas cadastrar novos usuários.
+                    </p>
+
+                    <form id="usuario-form">
+                        <label for="usuario-nome">Nome</label>
+                        <input type="text" id="usuario-nome" required>
+
+                        <label for="usuario-email">Email</label>
+                        <input type="email" id="usuario-email" required>
+
+                        <label for="usuario-senha">Senha</label>
+                        <input type="password" id="usuario-senha" required minlength="6">
+
+                        <label for="usuario-role">Perfil</label>
+                        <select id="usuario-role" required>
+                            <option value="FUNCIONARIO">Funcionário</option>
+                            <option value="ADMIN">Administrador</option>
+                        </select>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script type="module" src="../js/usuarios.js"></script>
+</body>
+</html>
