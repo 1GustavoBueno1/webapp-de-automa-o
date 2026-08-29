@@ -41,6 +41,11 @@ if (user) {
                 <td>${escapeHtml(clienteNome(a.cliente_id))}</td>
                 <td class="actions">
                     <button class="btn btn-small btn-primary" data-action="executar" data-id="${a.id}">Executar</button>
+                    ${
+                        isAdmin
+                            ? `<button class="btn btn-small btn-danger" data-action="excluir" data-id="${a.id}">Excluir</button>`
+                            : ""
+                    }
                 </td>
             </tr>`
             )
@@ -104,21 +109,37 @@ if (user) {
     });
 
     tbody.addEventListener("click", async (event) => {
-        const btn = event.target.closest("button[data-action=executar]");
+        const btn = event.target.closest("button[data-action]");
         if (!btn) return;
 
-        btn.disabled = true;
-        const originalLabel = btn.textContent;
-        btn.textContent = "Executando...";
+        if (btn.dataset.action === "executar") {
+            btn.disabled = true;
+            const originalLabel = btn.textContent;
+            btn.textContent = "Executando...";
 
-        try {
-            const resultado = await Api.executarAutomacao(btn.dataset.id);
-            showAlert(alertBox, resultado.message || "Automação adicionada para processamento.", "success");
-        } catch (error) {
-            handleApiError(error, alertBox);
-        } finally {
-            btn.disabled = false;
-            btn.textContent = originalLabel;
+            try {
+                const resultado = await Api.executarAutomacao(btn.dataset.id);
+                showAlert(alertBox, resultado.message || "Automação adicionada para processamento.", "success");
+            } catch (error) {
+                handleApiError(error, alertBox);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = originalLabel;
+            }
+        }
+
+        if (btn.dataset.action === "excluir") {
+            const automacao = automacoesCache.find((a) => String(a.id) === String(btn.dataset.id));
+            const nome = automacao ? automacao.nome : `#${btn.dataset.id}`;
+            if (!confirm(`Excluir a automação "${nome}"? Essa ação não pode ser desfeita.`)) return;
+
+            try {
+                await Api.excluirAutomacao(btn.dataset.id);
+                await loadAll();
+            } catch (error) {
+                // Se houver jobs vinculados, o backend bloqueia e explica o motivo.
+                handleApiError(error, alertBox);
+            }
         }
     });
 

@@ -45,3 +45,13 @@ export async function buscarAutomacaoPorId(id: number) {
     )
     return resultado.rows[0]
 }
+
+export async function deletarAutomacao(id: number) {
+    const resultado = await DB.query(
+        `
+        DELETE FROM automacao WHERE id = $1
+        RETURNING *
+        `, [id]
+    )
+    return resultado.rows[0]
+}

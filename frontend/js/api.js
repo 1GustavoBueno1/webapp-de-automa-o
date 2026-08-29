@@ -96,8 +96,11 @@ export const Api = {
     buscarAutomacao: (id) => request(`/automacoes/${id}`),
     criarAutomacao: (payload) => request("/automacoes", { method: "POST", body: payload }),
     executarAutomacao: (id) => request(`/automacoes/${id}/executar`, { method: "POST" }),
+    excluirAutomacao: (id) => request(`/automacoes/${id}`, { method: "DELETE" }),
 
     // Jobs
     listarJobs: () => request("/job"),
     buscarJob: (id) => request(`/job/${id}`),
+    atualizarJob: (id, payload) => request(`/job/${id}`, { method: "PATCH", body: payload }),
+    excluirJob: (id) => request(`/job/${id}`, { method: "DELETE" }),
 };

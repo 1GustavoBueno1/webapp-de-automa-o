@@ -31,6 +31,38 @@
                     <button type="button" id="refresh-jobs-btn" class="btn btn-secondary">Atualizar</button>
                 </section>
 
+                <section id="job-form-section" class="panel" hidden>
+                    <h2>Atualizar Job</h2>
+                    <form id="job-form">
+                        <input type="hidden" id="job-id">
+
+                        <label for="job-status">Status</label>
+                        <select id="job-status" required>
+                            <option value="PENDENTE">Pendente</option>
+                            <option value="PROCESSANDO">Processando</option>
+                            <option value="CONCLUIDO">Concluído</option>
+                            <option value="ERRO">Erro</option>
+                        </select>
+
+                        <label for="job-iniciado-em">Data de início</label>
+                        <input type="datetime-local" id="job-iniciado-em">
+
+                        <label for="job-finalizado-em">Data de fim</label>
+                        <input type="datetime-local" id="job-finalizado-em">
+
+                        <label for="job-resultado">Resultado</label>
+                        <input type="text" id="job-resultado" placeholder="Descrição do resultado, se concluído">
+
+                        <label for="job-erro">Erro</label>
+                        <input type="text" id="job-erro" placeholder="Mensagem de erro, se houver">
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <button type="button" id="cancel-job-btn" class="btn btn-ghost">Cancelar</button>
+                        </div>
+                    </form>
+                </section>
+
                 <section class="panel">
                     <div style="overflow-x:auto">
                         <table class="data-table">
@@ -44,10 +76,11 @@
                                     <th>Fim</th>
                                     <th>Resultado</th>
                                     <th>Erro</th>
+                                    <th>Ações</th>
                                 </tr>
                             </thead>
                             <tbody id="jobs-tbody">
-                                <tr><td colspan="8" class="empty-state">Carregando...</td></tr>
+                                <tr><td colspan="9" class="empty-state">Carregando...</td></tr>
                             </tbody>
                         </table>
                     </div>

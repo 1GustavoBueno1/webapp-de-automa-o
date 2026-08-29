@@ -13,7 +13,11 @@ export function errorHandler(
     }
 
     if (err?.code === "23503") {
-        return res.status(400).json({ message: "Referência inválida: registro relacionado não existe" });
+        const bloqueadoPorDependentes = typeof err.detail === "string" && err.detail.includes("is still referenced from");
+        const message = bloqueadoPorDependentes
+            ? "Não é possível excluir: existem registros vinculados a este item."
+            : "Referência inválida: registro relacionado não existe";
+        return res.status(400).json({ message });
     }
 
     if (err?.type === "entity.parse.failed") {
